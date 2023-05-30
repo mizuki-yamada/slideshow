@@ -19,9 +19,6 @@ const imageChangebyButton = (index) => {
 
 thumbnails.forEach((thumbnail) => {
   thumbnail.addEventListener("click", () => {
-    // for (var i = 0; i < thumbnails.length; i++) {
-    //   thumbnails[i].classList.remove("active");
-    // }
     removeActiveClass();
     thumbnail.classList.add("active");
     topImage.src = thumbnail.src;
