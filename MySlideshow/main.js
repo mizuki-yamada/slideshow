@@ -6,11 +6,23 @@ const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 var showIndex = 0;
 
+const removeActiveClass = () => {
+  for (var i = 0; i < thumbnails.length; i++) {
+    thumbnails[i].classList.remove("active");
+  }
+};
+
+const imageChangebyButton = (index) => {
+  thumbnails[index].classList.add("active");
+  topImage.src = thumbnails[index].src;
+};
+
 thumbnails.forEach((thumbnail) => {
   thumbnail.addEventListener("click", () => {
-    for (var i = 0; i < thumbnails.length; i++) {
-      thumbnails[i].classList.remove("active");
-    }
+    // for (var i = 0; i < thumbnails.length; i++) {
+    //   thumbnails[i].classList.remove("active");
+    // }
+    removeActiveClass();
     thumbnail.classList.add("active");
     topImage.src = thumbnail.src;
   });
@@ -23,11 +35,8 @@ next.addEventListener("click", () => {
   } else {
     showIndex = 0;
   }
-  for (var i = 0; i < thumbnails.length; i++) {
-    thumbnails[i].classList.remove("active");
-  }
-  thumbnails[showIndex].classList.add("active");
-  topImage.src = thumbnails[showIndex].src;
+  removeActiveClass();
+  imageChangebyButton(showIndex);
 });
 
 prev.addEventListener("click", () => {
@@ -37,9 +46,6 @@ prev.addEventListener("click", () => {
   } else {
     showIndex = 2;
   }
-  for (var i = 0; i < thumbnails.length; i++) {
-    thumbnails[i].classList.remove("active");
-  }
-  thumbnails[showIndex].classList.add("active");
-  topImage.src = thumbnails[showIndex].src;
+  removeActiveClass();
+  imageChangebyButton(showIndex);
 });
